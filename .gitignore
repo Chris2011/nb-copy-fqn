@@ -1,0 +1,14 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+/nbproject/private/
+/build/
+/private/
+/target/
+/.idea/
+/*.iml
+/src/main/resources/rebel.xml
+/nbproject/

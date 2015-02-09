@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+OpenIDE-Module: de.markiewb.netbeans.plugin.copyfqn
+OpenIDE-Module-Localizing-Bundle: de/markiewb/netbeans/plugin/copyfqn/Bundle.properties
+OpenIDE-Module-Display-Category: Java
