@@ -202,6 +202,8 @@ public final class FQNGenerator {
                     //fallthrough
                     case ENUM:
                     //fallthrough
+                    case ANNOTATION_TYPE:
+                        //fallthrough
                     case INTERFACE:
                         if (!(enclosingElement instanceof QualifiedNameable)) {
                             return null;
