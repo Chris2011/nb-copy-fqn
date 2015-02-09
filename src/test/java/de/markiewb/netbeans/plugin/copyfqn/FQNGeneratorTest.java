@@ -16,7 +16,7 @@
 package de.markiewb.netbeans.plugin.copyfqn;
 
 import static de.markiewb.netbeans.plugin.copyfqn.FQNGenerator.Option.OPTION_NOFQN;
-import static de.markiewb.netbeans.plugin.copyfqn.FQNGenerator.Option.OPTION_SHORTENUP;
+import static de.markiewb.netbeans.plugin.copyfqn.FQNGenerator.Option.OPTION_ABREVIATE;
 import java.util.EnumSet;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -39,7 +39,7 @@ public class FQNGeneratorTest {
     }
     @Test
     public void formatType_shortenup() {
-        final EnumSet<FQNGenerator.Option> options = EnumSet.of(OPTION_SHORTENUP);
+        final EnumSet<FQNGenerator.Option> options = EnumSet.of(OPTION_ABREVIATE);
         assertEquals("", FQNGenerator.formatType("", options));
         assertEquals("Foo", FQNGenerator.formatType("Foo", options));
         assertEquals("c.Foo", FQNGenerator.formatType("com.Foo", options));

@@ -18,6 +18,7 @@ package de.markiewb.netbeans.plugin.copyfqn;
 import com.sun.source.tree.CompilationUnitTree;
 import com.sun.source.util.TreePath;
 import com.sun.source.util.TreePathScanner;
+import static de.markiewb.netbeans.plugin.copyfqn.CopyFQNPanel.LONGMODE_DEFAULT;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -46,6 +47,7 @@ import org.netbeans.api.java.source.TreePathHandle;
 import org.netbeans.api.java.source.TypeUtilities;
 import org.openide.filesystems.FileObject;
 import org.openide.util.Exceptions;
+import org.openide.util.NbPreferences;
 
 /**
  *
@@ -159,7 +161,14 @@ public final class FQNGenerator {
 
         private String formatTypeMirror(final TypeMirror type) {
             final String typeName = info.getTypeUtilities().getTypeName(type, TypeUtilities.TypeNameOptions.PRINT_FQN).toString();
-            return formatType(typeName, EnumSet.noneOf(Option.class));
+            boolean longMode = NbPreferences.forModule(CopyFQNPanel.class).getBoolean("longMode", LONGMODE_DEFAULT);
+            EnumSet<Option> options;
+            if (longMode) {
+                options = EnumSet.noneOf(Option.class);
+            } else {
+                options = EnumSet.of(Option.OPTION_NOFQN);
+            }
+            return formatType(typeName, options);
         }
 
         private String getFQN(final Element enclosingElement, Element e) {
@@ -275,7 +284,7 @@ public final class FQNGenerator {
             return "";
         }
 
-        if (options.contains(Option.OPTION_SHORTENUP)) {
+        if (options.contains(Option.OPTION_ABREVIATE)) {
             int lastIndexOf = typeName.lastIndexOf(".");
             if (typeName.length() - 1 == lastIndexOf) {
                 //special case: "java.lang.String."
@@ -311,7 +320,7 @@ public final class FQNGenerator {
 
     public static enum Option {
 
-        OPTION_SHORTENUP,
+        OPTION_ABREVIATE,
         OPTION_NOFQN;
     }
 }
