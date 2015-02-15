@@ -192,7 +192,9 @@ public final class FQNGenerator {
                         final ExecutableElement executableElement = (ExecutableElement) e;
                         final String methodName = executableElement.getSimpleName().toString();
                         final List<String> params = getParameters(executableElement);
-                        final String returnType = getReturnType(executableElement);
+                        //ignore return type - not supported in eclipse
+                        //final String returnType = getReturnType(executableElement);
+                        final String returnType = "";
                         result = String.format("%s.%s(%s)%s", fqType, methodName, StringUtils.join(params, ", "), returnType);
                     }
                     break;
