@@ -22,7 +22,6 @@ import static de.markiewb.netbeans.plugin.copyfqn.CopyFQNPanel.LONGMODE_DEFAULT;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.EnumSet;
 import java.util.List;
 import javax.lang.model.element.Element;
 import static javax.lang.model.element.ElementKind.CLASS;
@@ -63,7 +62,7 @@ public final class FQNGenerator {
      * @throws IllegalArgumentException
      */
     public static List<String> getAllFQNFor(Collection<? extends TreePathHandle> handles) {
-        final List<String> resultList = new ArrayList<String>();
+        final List<String> resultList = new ArrayList<>();
 
         //support multiple selections
         for (final TreePathHandle handle : handles) {
@@ -74,7 +73,7 @@ public final class FQNGenerator {
             }
             JavaSource javaSource = JavaSource.forFileObject(fileObject);
 
-            final List<String> javaResultList = new ArrayList<String>();
+            final List<String> javaResultList = new ArrayList<>();
             if (null != javaSource) {
                 //recognized java source
                 try {
@@ -120,14 +119,14 @@ public final class FQNGenerator {
          * @return previously collected fully qualified names of n-items
          */
         public List<String> getResultList() {
-            return new ArrayList<String>(resultList);
+            return new ArrayList<>(resultList);
         }
         private CompilationInfo info;
         private List<String> resultList;
 
         public AbstractMemberVisitor(CompilationInfo info) {
             this.info = info;
-            resultList = new ArrayList<String>();
+            resultList = new ArrayList<>();
         }
 
         @Override
@@ -151,7 +150,7 @@ public final class FQNGenerator {
          * @return
          */
         private List<String> getParameters(ExecutableElement executableElement) {
-            final List<String> result = new ArrayList<String>();
+            final List<String> result = new ArrayList<>();
             for (VariableElement variableElement : executableElement.getParameters()) {
                 String typeName = formatTypeMirror(variableElement.asType());
                 result.add(typeName);
@@ -160,15 +159,14 @@ public final class FQNGenerator {
         }
 
         private String formatTypeMirror(final TypeMirror type) {
-            final String typeName = info.getTypeUtilities().getTypeName(type, TypeUtilities.TypeNameOptions.PRINT_FQN).toString();
+            String typeName;
             boolean longMode = NbPreferences.forModule(CopyFQNPanel.class).getBoolean("longMode", LONGMODE_DEFAULT);
-            EnumSet<Option> options;
             if (longMode) {
-                options = EnumSet.noneOf(Option.class);
+                typeName = info.getTypeUtilities().getTypeName(type, TypeUtilities.TypeNameOptions.PRINT_FQN).toString();
             } else {
-                options = EnumSet.of(Option.OPTION_NOFQN);
+                typeName = info.getTypeUtilities().getTypeName(type).toString();
             }
-            return formatType(typeName, options);
+            return formatType(typeName, false);
         }
 
         private String getFQN(final Element enclosingElement, Element e) {
@@ -280,13 +278,13 @@ public final class FQNGenerator {
         public abstract Element getElement(CompilationInfo info);
     }
 
-    public static String formatType(final String typeName, EnumSet<Option> options) {
+    public static String formatType(final String typeName, boolean abbreviate) {
 
         if (null == typeName || typeName.isEmpty()) {
             return "";
         }
 
-        if (options.contains(Option.OPTION_ABREVIATE)) {
+        if (abbreviate) {
             int lastIndexOf = typeName.lastIndexOf(".");
             if (typeName.length() - 1 == lastIndexOf) {
                 //special case: "java.lang.String."
@@ -305,16 +303,6 @@ public final class FQNGenerator {
                     }
                 }
                 return sb.toString() + name;
-            }
-        }
-        if (options.contains(Option.OPTION_NOFQN)) {
-            int lastIndexOf = typeName.lastIndexOf(".");
-            if (typeName.length() - 1 == lastIndexOf) {
-                //special case: "java.lang.String."
-                return "";
-            }
-            if (-1 != lastIndexOf) {
-                return typeName.substring(lastIndexOf + 1);
             }
         }
         return typeName;
