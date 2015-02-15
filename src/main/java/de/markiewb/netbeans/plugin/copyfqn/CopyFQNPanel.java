@@ -165,6 +165,7 @@ final class CopyFQNPanel extends javax.swing.JPanel {
 
     void load() {
         rbLong.setSelected(NbPreferences.forModule(CopyFQNPanel.class).getBoolean("longMode", LONGMODE_DEFAULT));
+        rbShort.setSelected(!NbPreferences.forModule(CopyFQNPanel.class).getBoolean("longMode", LONGMODE_DEFAULT));
     }
 
     void store() {
