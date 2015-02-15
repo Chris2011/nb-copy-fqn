@@ -45,7 +45,7 @@
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-openide-dialogs</artifactId>
-            <version>RELEASE74</version>
+            <version>${netbeans.version}</version>
             <type>jar</type>
         </dependency>
         <dependency>
@@ -66,29 +66,29 @@
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-modules-java-source</artifactId>
-            <version>RELEASE74</version>
+            <version>${netbeans.version}</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-openide-nodes</artifactId>
-            <version>RELEASE74</version>
+            <version>${netbeans.version}</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-openide-loaders</artifactId>
-            <version>RELEASE74</version>
+            <version>${netbeans.version}</version>
         </dependency>
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-libs-javacapi</artifactId>
-            <version>RELEASE74</version>
+            <version>${netbeans.version}</version>
         </dependency>
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-openide-filesystems</artifactId>
-            <version>RELEASE74</version>
+            <version>${netbeans.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
