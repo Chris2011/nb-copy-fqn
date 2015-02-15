@@ -4,7 +4,7 @@
 
     <groupId>de.markiewb.netbeans.plugins</groupId>
     <artifactId>copy-fqn</artifactId>
-    <version>1.3.0-SNAPSHOT</version>
+    <version>1.3.0.3-SNAPSHOT</version>
     <packaging>nbm</packaging>
 
     <name>Copy qualified name</name>
@@ -168,7 +168,9 @@
 &lt;li&gt;[&lt;a href="https://github.com/markiewb/nb-copy-fqn/issues/5"&gt;Task&lt;/a&gt;]: Add donation link &lt;/li&gt;
 &lt;li&gt;[&lt;a href="https://github.com/markiewb/nb-copy-fqn/issues/5"&gt;Feature&lt;/a&gt;]: Shorten up FQN (eclipse like, enabled by default) and option dialog&lt;/li&gt;
 &lt;li&gt;[&lt;a href="https://github.com/markiewb/nb-copy-fqn/issues/4"&gt;Feature&lt;/a&gt;]: Support annotation types too&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;[&lt;a href="https://github.com/markiewb/nb-copy-fqn/issues/8"&gt;Bug&lt;/a&gt;]: Do not copy return type of methods (keep it compatible to eclipse)&lt;/li&gt;
+&lt;li&gt;[&lt;a href="https://github.com/markiewb/nb-copy-fqn/issues/7"&gt;Bug&lt;/a&gt;]: Support generics in parameters&lt;/li&gt;
+ &lt;/ul&gt;
 &lt;p&gt;
 &lt;h3&gt;1.2&lt;/h3&gt;
 &lt;ul&gt;
