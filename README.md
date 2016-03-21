@@ -6,6 +6,7 @@ This plugin allows you to copy the fully qualified name of the element at the ca
 <li>Copy qualified name (in Members/Hierarchy view): <code>CTRL-J, CTRL-I</code></li>
 </ul>
 </p>
+<img src="https://raw.githubusercontent.com/markiewb/nb-copy-fqn/master/src/main/java/de/markiewb/netbeans/plugin/copyfqn/example.png">
 <p>
 <h2>Updates</h2>
 
