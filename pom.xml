@@ -160,6 +160,7 @@
 &lt;li&gt;Copy qualified name (in Members/Hierarchy view): &lt;code&gt;CTRL-J, CTRL-I&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/p&gt;
+&lt;img src="https://raw.githubusercontent.com/markiewb/nb-copy-fqn/master/src/main/java/de/markiewb/netbeans/plugin/copyfqn/example.png"&gt;
 &lt;p&gt;
 &lt;h2&gt;Updates&lt;/h2&gt;
 
