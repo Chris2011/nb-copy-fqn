@@ -15,10 +15,6 @@
  */
 package de.markiewb.netbeans.plugin.copyfqn;
 
-import static de.markiewb.netbeans.plugin.copyfqn.FQNGenerator.Option.OPTION_NOFQN;
-import static de.markiewb.netbeans.plugin.copyfqn.FQNGenerator.Option.OPTION_ABREVIATE;
-import java.util.EnumSet;
-import javax.lang.model.type.TypeMirror;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -27,24 +23,12 @@ import static org.junit.Assert.*;
  * @author markiewb
  */
 public class FQNGeneratorTest {
+
     @Test
-    public void formatType_noshortenup() {
-        final boolean abbreviate = false;
-        assertEquals("", FQNGenerator.formatType("", abbreviate));
-        assertEquals("Foo", FQNGenerator.formatType("Foo", abbreviate));
-        assertEquals("com.Foo", FQNGenerator.formatType("com.Foo", abbreviate));
-        assertEquals("java.lang.String", FQNGenerator.formatType("java.lang.String", abbreviate));
-        assertEquals("java.lang.String.", FQNGenerator.formatType("java.lang.String.", abbreviate));
+    public void formatType_shortenJavaLang() {
+        assertEquals("String", FQNGenerator.formatType("java.lang.String"));
+        assertEquals("XXX", FQNGenerator.formatType("XXX"));
+        assertEquals("java.util.XXX", FQNGenerator.formatType("java.util.XXX"));
     }
-    
-    @Test
-    public void formatType_shortenup() {
-        final boolean abbreviate = true;
-        assertEquals("", FQNGenerator.formatType("", abbreviate));
-        assertEquals("Foo", FQNGenerator.formatType("Foo", abbreviate));
-        assertEquals("c.Foo", FQNGenerator.formatType("com.Foo", abbreviate));
-        assertEquals("j.l.String", FQNGenerator.formatType("java.lang.String", abbreviate));
-        assertEquals("", FQNGenerator.formatType("java.lang.String.", abbreviate));
-    }
-    
+
 }

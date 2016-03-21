@@ -166,7 +166,7 @@ public final class FQNGenerator {
             } else {
                 typeName = info.getTypeUtilities().getTypeName(type).toString();
             }
-            return formatType(typeName, false);
+            return formatType(typeName);
         }
 
         private String getFQN(final Element enclosingElement, Element e) {
@@ -181,7 +181,7 @@ public final class FQNGenerator {
                         ExecutableElement executableElement = (ExecutableElement) e;
                         final String constructorName = ((QualifiedNameable) enclosingElement).getSimpleName().toString();
                         final List<String> params = getParameters(executableElement);
-                        result = String.format("%s.%s(%s)", fqType, constructorName, StringUtils.join(params, ", "));
+                        result = String.format("%s.%s(%s)", formatType(fqType), constructorName, StringUtils.join(params, ", "));
                     }
                     break;
                     case METHOD: {
@@ -195,7 +195,7 @@ public final class FQNGenerator {
                         //ignore return type - not supported in eclipse
                         //final String returnType = getReturnType(executableElement);
                         final String returnType = "";
-                        result = String.format("%s.%s(%s)%s", fqType, methodName, StringUtils.join(params, ", "), returnType);
+                        result = String.format("%s.%s(%s)%s", formatType(fqType), methodName, StringUtils.join(params, ", "), returnType);
                     }
                     break;
                     case CLASS:
@@ -203,7 +203,7 @@ public final class FQNGenerator {
                     case ENUM:
                     //fallthrough
                     case ANNOTATION_TYPE:
-                        //fallthrough
+                    //fallthrough
                     case INTERFACE:
                         if (!(enclosingElement instanceof QualifiedNameable)) {
                             return null;
@@ -211,7 +211,7 @@ public final class FQNGenerator {
                         String fqType = ((QualifiedNameable) enclosingElement).getQualifiedName().toString();
 
                         //support fields, toplevel-classes/-enums/-interfaces
-                        result = String.format("%s.%s", fqType, e.getSimpleName());
+                        result = String.format("%s.%s", formatType(fqType), e.getSimpleName());
                         break;
                     case PACKAGE:
                         result = nameFor((PackageElement) e);
@@ -227,15 +227,6 @@ public final class FQNGenerator {
                 }
             }
             return result;
-        }
-
-        private String getReturnType(final ExecutableElement executableElement) {
-            final String type = formatTypeMirror(executableElement.getReturnType());
-            if ("void".equals(type)) {
-                return "";
-            } else {
-                return ":" + type;
-            }
         }
 
         /**
@@ -280,39 +271,15 @@ public final class FQNGenerator {
         public abstract Element getElement(CompilationInfo info);
     }
 
-    public static String formatType(final String typeName, boolean abbreviate) {
+    public static String formatType(final String typeName) {
 
         if (null == typeName || typeName.isEmpty()) {
             return "";
         }
-
-        if (abbreviate) {
-            int lastIndexOf = typeName.lastIndexOf(".");
-            if (typeName.length() - 1 == lastIndexOf) {
-                //special case: "java.lang.String."
-                return "";
-            }
-            if (-1 != lastIndexOf) {
-                String packageName = typeName.substring(0, lastIndexOf);
-                String name = typeName.substring(lastIndexOf + 1);
-                String[] split = packageName.split("\\.");
-                StringBuilder sb = new StringBuilder();
-
-                for (String split1 : split) {
-                    if (!split1.isEmpty()) {
-                        sb.append(split1.charAt(0));
-                        sb.append(".");
-                    }
-                }
-                return sb.toString() + name;
-            }
+        if (typeName.startsWith("java.lang.")) {
+            return typeName.substring("java.lang.".length());
         }
         return typeName;
     }
 
-    public static enum Option {
-
-        OPTION_ABREVIATE,
-        OPTION_NOFQN;
-    }
 }
