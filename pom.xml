@@ -4,7 +4,7 @@
 
     <groupId>de.markiewb.netbeans.plugins</groupId>
     <artifactId>copy-fqn</artifactId>
-    <version>1.4.0</version>
+    <version>1.4.1</version>
     <packaging>nbm</packaging>
 
     <name>Copy qualified name</name>
@@ -104,7 +104,7 @@
     </dependencies>
 
     <build>
-        <finalName>de-markiewb-netbeans-plugins-hints-${project.version}</finalName>
+        <finalName>de-markiewb-netbeans-plugin-copyfqn-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -163,6 +163,11 @@
 &lt;img src="https://raw.githubusercontent.com/markiewb/nb-copy-fqn/master/src/main/java/de/markiewb/netbeans/plugin/copyfqn/example.png"&gt;
 &lt;p&gt;
 &lt;h2&gt;Updates&lt;/h2&gt;
+
+&lt;h3&gt;1.4.1:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href="https://github.com/markiewb/nb-copy-fqn/issues/12"&gt;Bug&lt;/a&gt;]: Built artefacts have wrong name&lt;/li&gt;
+ &lt;/ul&gt;
 
 &lt;h3&gt;1.4.0:&lt;/h3&gt;
 &lt;ul&gt;
