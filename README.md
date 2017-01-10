@@ -10,6 +10,11 @@ This plugin allows you to copy the fully qualified name of the element at the ca
 <p>
 <h2>Updates</h2>
 
+<h3>1.4.1:</h3>
+<ul>
+<li>[<a href="https://github.com/markiewb/nb-copy-fqn/issues/12">Bug</a>]: Built artefacts have wrong name</li>
+ </ul>
+
 <h3>1.4.0:</h3>
 <ul>
 <li>[<a href="https://github.com/markiewb/nb-copy-fqn/issues/10">Feature</a>]: Don't use FQN for types from java.lang</li>
