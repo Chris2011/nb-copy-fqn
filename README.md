@@ -1,3 +1,7 @@
+<hr>
+<h1 style="color: #FF0000">Looking for maintainers, who want to take over the development!</h1>
+<hr>
+
 This plugin allows you to copy the fully qualified name of the element at the caret in the java source editor to the clipboard. There is also a context menu entry to copy it from the members and hierarchy view. Shortcuts for these actions can also be defined.
 
 <p>
